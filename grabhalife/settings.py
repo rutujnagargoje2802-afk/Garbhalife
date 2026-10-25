@@ -78,7 +78,6 @@ WSGI_APPLICATION = 'grabhalife.wsgi.application'
 
 
 
-
 if os.environ.get("DATABASE_URL"):
     DATABASES = {
         "default": dj_database_url.config(
@@ -93,12 +92,11 @@ else:
             "ENGINE": "django.db.backends.postgresql",
             "NAME": "Garbhalife",
             "USER": "postgres",
-            "PASSWORD": os.environ.get("LOCAL_DB_PASSWORD", ""),
+            "PASSWORD": os.environ.get("LOCAL_DB_PASSWORD", "1234"),
             "HOST": "localhost",
             "PORT": "5433",
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
