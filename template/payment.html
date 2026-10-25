@@ -1,0 +1,248 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Garbhalife | Payment</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{% static 'css/Style.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+
+<header class="cart-header">
+
+    <div class="logo-text">
+        
+        GARBHALIFE
+    </div>
+
+
+    <a href="{% url 'cart' %}"
+       class="back-cart">
+
+        ← Back to Cart
+
+    </a>
+
+</header>
+
+
+
+<!-- PAYMENT -->
+
+<section class="payment-section">
+
+    <div class="payment-container">
+
+
+        <!-- LEFT -->
+
+        <div class="payment-left">
+
+            <span class="eyebrow">
+                SECURE CHECKOUT
+            </span>
+
+            <h1>
+                Complete<br>
+                <em>your payment.</em>
+            </h1>
+
+            <p class="payment-intro">
+
+                Your order is almost ready.
+                Complete your payment securely
+                using Razorpay.
+
+            </p>
+
+
+            <!-- PRODUCTS -->
+
+            <div class="order-products">
+
+                <h2>
+                    Your Order
+                </h2>
+
+
+                {% for item in cart_items %}
+
+                <div class="order-item">
+
+                    <div class="order-image">
+
+                        {% if item.product.image %}
+
+                            <img
+                                src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}"
+                            >
+
+                        {% else %}
+
+                            <img
+                                src="{% static 'images/product-placeholder.jpg' %}"
+                                alt="{{ item.product.name }}"
+                            >
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="order-info">
+
+                        <h3>
+                            {{ item.product.name }}
+                        </h3>
+
+                        <p>
+                            Quantity:
+                            {{ item.quantity }}
+                        </p>
+
+                    </div>
+
+
+                    <strong>
+
+                        ₹{{ item.subtotal }}
+
+                    </strong>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="payment-right">
+
+            <div class="payment-card">
+
+                <span class="card-label">
+                    ORDER SUMMARY
+                </span>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Items
+                    </span>
+
+                    <strong>
+                        {{ cart_items|length }}
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line"></div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong>
+                        ₹{{ total }}
+                    </strong>
+
+                </div>
+
+
+                <button
+                    id="rzp-button"
+                    class="pay-button">
+
+                    Pay ₹{{ total }}
+
+                </button>
+
+
+                <div class="secure-message">
+
+                    🔒 Secure payment powered by Razorpay
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "Garbhalife",
+    "description": "Garbhalife Store Purchase",
+    "order_id": "{{ razorpay_order_id }}",
+    "handler": function (response) {
+        // Changed to a standard string URL path to prevent template execution freezes
+        window.location.href = "/payment-success/" +
+            "?payment_id=" + response.razorpay_payment_id +
+            "&order_id=" + response.razorpay_order_id +
+            "&signature=" + response.razorpay_signature;
+    },
+    "theme": {
+        "color": "#293229"
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById("rzp-button").onclick = function(e) {
+    e.preventDefault(); // Moved to the top of the action event handler loop
+    rzp.open();
+};
+</script>
+
+
+</body>
+
+</html>

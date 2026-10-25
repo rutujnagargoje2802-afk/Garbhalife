@@ -1,0 +1,538 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+<!-- =========================
+     PROGRAM LIST
+========================= -->
+
+<section class="programs-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            EXPLORE
+        </span>
+
+        <h2>
+            Our Pregnancy Programs
+        </h2>
+
+        <p>
+            Choose the guidance that suits your stage
+            and pregnancy journey.
+        </p>
+
+    </div>
+
+
+    <div class="program-grid">
+
+
+        <!-- PROGRAM 01 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                01
+            </div>
+
+            <div class="program-icon">
+                ✦
+            </div>
+
+            <h3>
+                Complete
+                Garbhasanskar Program
+            </h3>
+
+            <p>
+                A structured journey combining Garbhasanskar,
+                mindful pregnancy practices, meditation,
+                music and positive parenting.
+            </p>
+
+            <ul>
+
+                <li>Garbhasanskar guidance</li>
+                <li>Mindful pregnancy practices</li>
+                <li>Meditation & relaxation</li>
+                <li>Positive parenting guidance</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM 02 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                02
+            </div>
+
+            <div class="program-icon">
+                ♡
+            </div>
+
+            <h3>
+                Pregnancy
+                Wellness Program
+            </h3>
+
+            <p>
+                A wellness-focused program supporting
+                healthy lifestyle habits and emotional
+                wellbeing during pregnancy.
+            </p>
+
+            <ul>
+
+                <li>Ayurvedic lifestyle guidance</li>
+                <li>Pregnancy wellness tips</li>
+                <li>Relaxation practices</li>
+                <li>Daily routine guidance</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM 03 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                03
+            </div>
+
+            <div class="program-icon">
+                ☾
+            </div>
+
+            <h3>
+                Pregnancy Yoga &
+                Meditation Program
+            </h3>
+
+            <p>
+                Gentle practices designed to encourage
+                relaxation, mindfulness and physical
+                wellbeing during pregnancy.
+            </p>
+
+            <ul>
+
+                <li>Pregnancy yoga</li>
+                <li>Breathing practices</li>
+                <li>Meditation</li>
+                <li>Relaxation techniques</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM 04 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                04
+            </div>
+
+            <div class="program-icon">
+                ♪
+            </div>
+
+            <h3>
+                Music &
+                Positive Parenting
+            </h3>
+
+            <p>
+                A mindful program focused on positive
+                communication, music and emotional
+                bonding during pregnancy.
+            </p>
+
+            <ul>
+
+                <li>Music-based activities</li>
+                <li>Positive communication</li>
+                <li>Parent-child bonding</li>
+                <li>Mindful parenting</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM 05 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                05
+            </div>
+
+            <div class="program-icon">
+                ❋
+            </div>
+
+            <h3>
+                Ayurvedic
+                Pregnancy Guidance
+            </h3>
+
+            <p>
+                Personalized guidance inspired by Ayurvedic
+                principles and pregnancy wellness practices.
+            </p>
+
+            <ul>
+
+                <li>Ayurvedic lifestyle guidance</li>
+                <li>Dietary guidance</li>
+                <li>Daily routine</li>
+                <li>Wellness practices</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+
+        <!-- PROGRAM 06 -->
+
+        <div class="program-card">
+
+            <div class="program-number">
+                06
+            </div>
+
+            <div class="program-icon">
+                ∞
+            </div>
+
+            <h3>
+                Preconception
+                Wellness Program
+            </h3>
+
+            <p>
+                Guidance for couples preparing themselves
+                mindfully for pregnancy and parenthood.
+            </p>
+
+            <ul>
+
+                <li>Preconception wellness</li>
+                <li>Lifestyle guidance</li>
+                <li>Mindfulness</li>
+                <li>Parenthood preparation</li>
+
+            </ul>
+
+            <a href="{% url 'contact' %}">
+                Enquire Now →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW PROGRAM WORKS
+========================= -->
+
+<section class="how-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            SIMPLE & PERSONAL
+        </span>
+
+        <h2>
+            How Our Programs Work
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Connect
+            </h3>
+
+            <p>
+                Begin by reaching out to us and sharing
+                your pregnancy journey and requirements.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Understand
+            </h3>
+
+            <p>
+                Discuss your needs and understand which
+                program may be suitable for you.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Begin
+            </h3>
+
+            <p>
+                Start your personalized journey with
+                guidance and meaningful practices.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Grow Together
+            </h3>
+
+            <p>
+                Continue building positive habits and
+                a deeper connection with your baby.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NOTE
+========================= -->
+
+<section class="program-note">
+
+    <div class="note-box">
+
+        <span class="section-label">
+            IMPORTANT
+        </span>
+
+        <h2>
+            Personalized Guidance Matters
+        </h2>
+
+        <p>
+            Every pregnancy is different. Program content,
+            practices and guidance should be personalized
+            according to the mother's individual situation
+            and stage of pregnancy.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="program-cta">
+
+    <div class="cta-content">
+
+        <span>
+            BEGIN YOUR JOURNEY
+        </span>
+
+        <h2>
+            Choose A More
+            <br>
+            Mindful Pregnancy
+        </h2>
+
+        <p>
+            Connect with Dr. Prajakta to understand
+            which GARBHALIFE program is right for you.
+        </p>
+
+        <a
+            href="{% url 'contact' %}"
+            class="cta-button"
+        >
+            Enquire Now
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        GARBHALIFE
+    </div>
+
+    <p>
+        Ayurveda • Garbhasanskar • Mindful Motherhood
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="copyright">
+        © 2026 GARBHALIFE. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

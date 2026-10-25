@@ -1,0 +1,606 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+<link rel="stylesheet" href="{% static 'css/Style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="services-hero">
+
+    <div class="hero-content">
+
+        <span class="small-heading">
+            OUR SERVICES
+        </span>
+
+        <h1>
+            Nurturing
+            <span>Mother & Baby</span>
+        </h1>
+
+        <p>
+            Personalized guidance inspired by Ayurveda,
+            Garbhasanskar and mindful pregnancy practices
+            to support mothers through their beautiful journey.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- =========================
+     SERVICES GRID
+========================= -->
+
+<section class="services-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            WHAT WE OFFER
+        </span>
+
+        <h2>
+            Our Services
+        </h2>
+
+        <p>
+            Explore our range of pregnancy wellness and
+            Garbhasanskar services.
+        </p>
+
+    </div>
+
+
+    <div class="services-grid">
+
+
+        <!-- SERVICE 01 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                01
+            </div>
+
+            <div class="service-icon">
+                ✦
+            </div>
+
+            <h3>
+                Garbhasanskar
+                Consultation
+            </h3>
+
+            <p>
+                Personalized guidance for conscious pregnancy,
+                emotional wellbeing and developing a meaningful
+                connection between mother and baby.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Book Consultation →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 02 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                02
+            </div>
+
+            <div class="service-icon">
+                ❋
+            </div>
+
+            <h3>
+                Ayurvedic
+                Pregnancy Care
+            </h3>
+
+            <p>
+                Ayurvedic lifestyle and wellness guidance
+                designed to support mothers during different
+                stages of pregnancy.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 03 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                03
+            </div>
+
+            <div class="service-icon">
+                ◌
+            </div>
+
+            <h3>
+                Diet & Nutrition
+                Guidance
+            </h3>
+
+            <p>
+                Practical food and lifestyle guidance to help
+                mothers make mindful nutrition choices during
+                pregnancy.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Get Guidance →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 04 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                04
+            </div>
+
+            <div class="service-icon">
+                ♡
+            </div>
+
+            <h3>
+                Pregnancy
+                Yoga
+            </h3>
+
+            <p>
+                Gentle yoga practices focused on relaxation,
+                mobility, breathing and overall pregnancy
+                wellbeing.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Explore Yoga →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 05 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                05
+            </div>
+
+            <div class="service-icon">
+                ☾
+            </div>
+
+            <h3>
+                Meditation &
+                Mindfulness
+            </h3>
+
+            <p>
+                Mindfulness and meditation practices designed
+                to encourage calmness, awareness and emotional
+                balance.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Explore Sessions →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 06 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                06
+            </div>
+
+            <div class="service-icon">
+                ♪
+            </div>
+
+            <h3>
+                Music &
+                Positive Parenting
+            </h3>
+
+            <p>
+                Meaningful activities involving music,
+                positive communication and preparation for
+                conscious parenting.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Learn More →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 07 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                07
+            </div>
+
+            <div class="service-icon">
+                ✧
+            </div>
+
+            <h3>
+                Lifestyle
+                Guidance
+            </h3>
+
+            <p>
+                Personalized lifestyle guidance covering
+                daily routines, relaxation, mindful habits
+                and pregnancy wellness.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Get Guidance →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICE 08 -->
+
+        <div class="service-card">
+
+            <div class="service-number">
+                08
+            </div>
+
+            <div class="service-icon">
+                ∞
+            </div>
+
+            <h3>
+                Preconception
+                Guidance
+            </h3>
+
+            <p>
+                Guidance for couples preparing themselves
+                physically, emotionally and mindfully for
+                pregnancy and parenthood.
+            </p>
+
+            <a href="{% url 'contact' %}">
+                Book Consultation →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PERSONALIZED CARE
+========================= -->
+
+<section class="personalized">
+
+    <div class="personalized-image">
+
+        <img
+            src="{% static 'images/service-care.jpg' %}"
+            alt="Pregnancy wellness consultation"
+        >
+
+    </div>
+
+
+    <div class="personalized-content">
+
+        <span class="section-label">
+            PERSONALIZED APPROACH
+        </span>
+
+        <h2>
+            Your Pregnancy,
+            <br>
+            Your Journey
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p>
+            Pregnancy is not the same for every woman.
+            Your lifestyle, emotional wellbeing, stage of
+            pregnancy and individual needs all matter.
+        </p>
+
+        <p>
+            That's why our approach focuses on personalized
+            guidance rather than a one-size-fits-all routine.
+        </p>
+
+        <ul>
+
+            <li>
+                Individual consultation
+            </li>
+
+            <li>
+                Personalized lifestyle guidance
+            </li>
+
+            <li>
+                Mindful pregnancy practices
+            </li>
+
+            <li>
+                Ayurvedic wellness guidance
+            </li>
+
+        </ul>
+
+        <a
+            href="{% url 'contact' %}"
+            class="gold-button"
+        >
+            Book A Consultation
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHY GARBHALIFE
+========================= -->
+
+<section class="why-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            WHY GARBHALIFE
+        </span>
+
+        <h2>
+            More Than A Consultation
+        </h2>
+
+    </div>
+
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <span>
+                01
+            </span>
+
+            <h3>
+                Traditional Wisdom
+            </h3>
+
+            <p>
+                Drawing inspiration from Ayurvedic principles
+                and traditional Garbhasanskar practices.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <span>
+                02
+            </span>
+
+            <h3>
+                Personalized Care
+            </h3>
+
+            <p>
+                Guidance that considers the individual needs
+                and journey of every mother.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <span>
+                03
+            </span>
+
+            <h3>
+                Mindful Motherhood
+            </h3>
+
+            <p>
+                Encouraging mothers to approach pregnancy
+                with awareness, positivity and connection.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="services-cta">
+
+    <div class="cta-content">
+
+        <span>
+            READY TO BEGIN?
+        </span>
+
+        <h2>
+            Take The First Step
+            <br>
+            Towards A Mindful Pregnancy
+        </h2>
+
+        <p>
+            Connect with Dr. Prajakta and discover the
+            right guidance for your pregnancy journey.
+        </p>
+
+        <a
+            href="{% url 'contact' %}"
+            class="cta-button"
+        >
+            Book A Consultation
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        GARBHALIFE
+    </div>
+
+    <p>
+        Ayurveda • Garbhasanskar • Mindful Motherhood
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="copyright">
+        © 2026 GARBHALIFE. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

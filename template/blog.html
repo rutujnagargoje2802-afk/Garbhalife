@@ -1,0 +1,409 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- =========================
+     BLOG HERO
+========================= -->
+
+<section class="blog-hero">
+
+    <div class="hero-content">
+
+        <span class="small-heading">
+            GARBHALIFE JOURNAL
+        </span>
+
+        <h1>
+            Knowledge for a
+            <span>Mindful Pregnancy</span>
+        </h1>
+
+        <p>
+            Explore thoughtful guidance on pregnancy wellness,
+            Ayurveda, Garbhasanskar, nutrition, yoga,
+            meditation and conscious motherhood.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORY BAR
+========================= -->
+
+<div class="category-container">
+
+    <a href="{% url 'blog' %}" class="category active">
+        All
+    </a>
+
+    {% for category in categories %}
+
+        <a
+            href="?category={{ category|urlencode }}"
+            class="category"
+        >
+            {{ category }}
+        </a>
+
+    {% endfor %}
+
+</div>
+
+
+<!-- =========================
+     FEATURED ARTICLE
+========================= -->
+
+{% if featured_post %}
+
+<section class="featured-section">
+
+    <div class="featured-image">
+
+        {% if featured_post.featured_image %}
+            <img
+                src="{{ featured_post.featured_image.url }}"
+                alt="{{ featured_post.title }}"
+            >
+        {% endif %}
+
+    </div>
+
+
+    <div class="featured-content">
+
+        <span class="article-category">
+            FEATURED ARTICLE
+        </span>
+
+        <h2>
+            {{ featured_post.title }}
+        </h2>
+
+        <p>
+            {{ featured_post.short_description }}
+        </p>
+
+        <div class="article-meta">
+
+            <span>
+                {{ featured_post.author }}
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                {{ featured_post.reading_time }} min read
+            </span>
+
+        </div>
+
+        <a
+            href="{% url 'blog_detail' featured_post.slug %}"
+            class="read-button"
+        >
+            Read Article →
+        </a>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+{% if single_post %}
+
+<!-- =========================
+     SINGLE BLOG POST
+========================= -->
+
+<section class="blog-detail">
+
+    <div class="blog-detail-container">
+
+        {% if post.featured_image %}
+
+            <div class="blog-detail-image">
+
+                <img
+                    src="{{ post.featured_image.url }}"
+                    alt="{{ post.title }}"
+                >
+
+            </div>
+
+        {% endif %}
+
+
+        <div class="blog-detail-content">
+
+            <span class="blog-detail-category">
+                {{ post.category|upper }}
+            </span>
+
+
+            <div class="blog-detail-meta">
+
+                {{ post.published_date|date:"d M Y" }}
+                •
+                {{ post.reading_time }} MIN READ
+
+            </div>
+
+
+            <h1>
+                {{ post.title }}
+            </h1>
+
+
+            {% if post.short_description %}
+
+                <p class="blog-detail-description">
+                    {{ post.short_description }}
+                </p>
+
+            {% endif %}
+
+
+            <!-- FULL BLOG CONTENT -->
+
+            <div class="blog-detail-text">
+
+                {{ post.content|linebreaks }}
+
+            </div>
+
+
+            <a
+                href="{% url 'blog' %}"
+                class="back-to-blog"
+            >
+                ← Back to Blog
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% else %}
+
+
+<!-- =========================
+     BLOG LIST
+========================= -->
+
+<div class="blog-grid">
+
+    {% for post in posts %}
+
+    <article class="blog-card">
+
+        <div class="blog-image">
+
+            {% if post.featured_image %}
+
+                <img
+                    src="{{ post.featured_image.url }}"
+                    alt="{{ post.title }}"
+                >
+
+            {% endif %}
+
+            <span>
+                {{ post.category|upper }}
+            </span>
+
+        </div>
+
+
+        <div class="blog-content">
+
+            <div class="blog-meta">
+
+                {{ post.published_date|date:"d M Y" }}
+                •
+                {{ post.reading_time }} MIN READ
+
+            </div>
+
+
+            <h3>
+                {{ post.title }}
+            </h3>
+
+
+            <p>
+                {{ post.short_description }}
+            </p>
+
+
+            <a
+                href="{% url 'blog_detail' post.slug %}"
+            >
+                Read More →
+            </a>
+
+        </div>
+
+    </article>
+
+    {% empty %}
+
+        <div class="no-products">
+            <p>No articles available.</p>
+        </div>
+
+    {% endfor %}
+
+</div>
+
+
+{% endif %}
+
+<!-- =========================
+     DISCLAIMER
+========================= -->
+
+<section class="blog-disclaimer">
+
+    <div class="disclaimer-box">
+
+        <strong>
+            Important:
+        </strong>
+
+        <p>
+            The information shared on this blog is intended
+            for general educational and wellness purposes.
+            It should not replace individualized medical
+            advice, diagnosis or treatment from a qualified
+            healthcare professional.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        GARBHALIFE
+    </div>
+
+    <p>
+        Ayurveda • Garbhasanskar • Mindful Motherhood
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="copyright">
+        © 2026 GARBHALIFE. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

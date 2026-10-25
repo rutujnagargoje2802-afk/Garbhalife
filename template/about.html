@@ -1,0 +1,534 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- =========================
+     ABOUT HERO
+========================= -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <span class="small-heading">
+            ABOUT GARBHALIFE
+        </span>
+
+        <h1>
+            A Conscious Beginning
+            <span>For Motherhood</span>
+        </h1>
+
+        <p>
+            Guiding mothers towards a healthy, positive and mindful
+            pregnancy journey through Ayurveda and Garbhasanskar.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOCTOR INTRODUCTION
+========================= -->
+
+<section class="doctor-section">
+
+    <div class="doctor-image">
+
+        <img
+            src="{% static 'images/doctor.jpg' %}"
+            alt="Dr. Prajakta Khade-Gite"
+        >
+
+    </div>
+
+
+    <div class="doctor-content">
+
+        <span class="section-label">
+            MEET YOUR GUIDE
+        </span>
+
+        <h2>
+            Dr. Prajakta
+            <br>
+            Khade-Gite
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p class="intro-text">
+
+            Dr. Prajakta Khade-Gite is an Ayurvedic doctor and
+            Garbhasanskar consultant from Pune, dedicated to
+            supporting women through a healthy, positive and
+            mindful pregnancy journey.
+
+        </p>
+
+        <p>
+
+            Her approach brings together traditional Ayurvedic
+            wisdom with practical guidance for today's mothers.
+            Through personalized pregnancy care, yoga,
+            meditation, music therapy and conscious parenting
+            practices, she aims to create a nurturing environment
+            for both mother and baby.
+
+        </p>
+
+        <p>
+
+            Through her initiative
+            <strong>Garbhalife Garbhasanskar”</strong>,
+            Dr. Prajakta works towards helping expecting mothers
+            experience pregnancy as a meaningful journey of
+            connection, awareness and preparation for motherhood.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PHILOSOPHY
+========================= -->
+
+<section class="philosophy">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            OUR PHILOSOPHY
+        </span>
+
+        <h2>
+            Pregnancy Is More Than
+            <br>
+            A Physical Journey
+        </h2>
+
+    </div>
+
+
+    <div class="philosophy-content">
+
+        <p>
+
+            Pregnancy is a beautiful phase of transformation.
+            It is a time when a mother begins forming a deep
+            connection with the child growing within her.
+
+        </p>
+
+        <p>
+
+            At Garbhalife, we believe that caring for the mother
+            means caring for the beginning of a new life.
+            Emotional wellbeing, positive thoughts, mindful
+            lifestyle practices and meaningful bonding can all
+            become part of this beautiful journey.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APPROACH
+========================= -->
+
+<section class="approach">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            OUR APPROACH
+        </span>
+
+        <h2>
+            A Holistic Approach
+            <br>
+            To Pregnancy
+        </h2>
+
+    </div>
+
+
+    <div class="approach-grid">
+
+
+        <div class="approach-card">
+
+            <span class="number">
+                01
+            </span>
+
+            <h3>
+                Ayurveda
+            </h3>
+
+            <p>
+                Traditional Ayurvedic wisdom combined with
+                practical lifestyle guidance for pregnancy
+                wellness.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span class="number">
+                02
+            </span>
+
+            <h3>
+                Yoga
+            </h3>
+
+            <p>
+                Gentle and mindful practices designed to support
+                physical comfort, relaxation and wellbeing.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span class="number">
+                03
+            </span>
+
+            <h3>
+                Meditation
+            </h3>
+
+            <p>
+                Practices that encourage calmness, awareness
+                and emotional balance during pregnancy.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span class="number">
+                04
+            </span>
+
+            <h3>
+                Music & Positive Parenting
+            </h3>
+
+            <p>
+                Meaningful activities that encourage bonding,
+                positive emotions and preparation for parenthood.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUHRUD GARBHASANSKAR
+========================= -->
+
+<section class="suhrud">
+
+    <div class="suhrud-content">
+
+        <span class="section-label">
+            OUR INITIATIVE
+        </span>
+
+        <h2>
+            Suhrud
+            <br>
+            Garbhasanskar
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p>
+
+            Garbhalife Garbhasanskar is an initiative focused on
+            helping expecting mothers embrace conscious
+            pregnancy through traditional wisdom and
+            meaningful daily practices.
+
+        </p>
+
+        <p>
+
+            The program encourages mothers to nurture their
+            physical, emotional and spiritual wellbeing while
+            developing a loving connection with their unborn baby.
+
+        </p>
+
+        <a href="{% url 'programs' %}" class="gold-button">
+            Explore Our Programs
+        </a>
+
+    </div>
+
+
+    <div class="suhrud-visual">
+
+        <div class="quote-card">
+
+            <span class="quote-mark">
+                “
+            </span>
+
+            <p>
+                Pregnancy is the beginning of a beautiful
+                relationship between a mother and her child.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VALUES
+========================= -->
+
+<section class="values">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            WHAT WE BELIEVE
+        </span>
+
+        <h2>
+            Our Core Values
+        </h2>
+
+    </div>
+
+
+    <div class="values-grid">
+
+
+        <div class="value-item">
+
+            <h3>
+                Consciousness
+            </h3>
+
+            <p>
+                Encouraging awareness and mindful choices
+                throughout pregnancy.
+            </p>
+
+        </div>
+
+
+        <div class="value-item">
+
+            <h3>
+                Compassion
+            </h3>
+
+            <p>
+                Creating a supportive and understanding
+                environment for every mother.
+            </p>
+
+        </div>
+
+
+        <div class="value-item">
+
+            <h3>
+                Tradition
+            </h3>
+
+            <p>
+                Respecting traditional Ayurvedic knowledge
+                and timeless wellness practices.
+            </p>
+
+        </div>
+
+
+        <div class="value-item">
+
+            <h3>
+                Empowerment
+            </h3>
+
+            <p>
+                Helping women feel informed, confident and
+                prepared for motherhood.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="about-cta">
+
+    <div class="cta-content">
+
+        <span>
+            BEGIN YOUR JOURNEY
+        </span>
+
+        <h2>
+            Make Your Pregnancy
+            <br>
+            A Mindful Journey
+        </h2>
+
+        <p>
+            Discover personalized guidance for a healthy,
+            positive and conscious pregnancy.
+        </p>
+
+        <a href="{% url 'contact' %}" class="cta-button">
+            Book A Consultation
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        GARBHALIFE
+    </div>
+
+    <p>
+        Ayurveda • Garbhasanskar • Mindful Motherhood
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="copyright">
+        © 2026 GARBHALIFE. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

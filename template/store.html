@@ -1,0 +1,506 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+  
+<a href="{% url 'cart' %}">
+    🛒
+    <span>
+        {{ cart_count|default:"0" }}
+    </span>
+</a> 
+
+</header>
+
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+
+<!-- =========================
+     STORE HERO
+========================= -->
+
+<section class="store-hero">
+
+    <div class="store-hero-content">
+
+        <span class="eyebrow">
+            THE GARBHALIFE COLLECTION
+        </span>
+
+        <h1>
+            Nurture.
+            <br>
+            <em>Connect.</em>
+            <br>
+            Grow.
+        </h1>
+
+        <p>
+            Thoughtfully selected resources and wellness
+            products to support mothers through pregnancy
+            and early motherhood.
+        </p>
+
+        <a href="#products" class="shop-button">
+            Explore Collection
+        </a>
+
+    </div>
+
+
+    <div class="hero-product-image">
+
+        <img
+            src="{% static 'images/store-hero.jpg' %}"
+            alt="GARBHALIFE products"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORY BAR
+========================= -->
+
+<section class="category-section">
+
+    <div class="category-title">
+
+        <span>
+            SHOP BY CATEGORY
+        </span>
+
+        <h2>
+            Find Something
+            <br>
+            Meaningful
+        </h2>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <a href="?category=garbhasanskar">
+            <span>01</span>
+            Garbhasanskar
+        </a>
+
+        <a href="?category=ayurveda">
+            <span>02</span>
+            Ayurveda
+        </a>
+
+        <a href="?category=pregnancy">
+            <span>03</span>
+            Pregnancy Wellness
+        </a>
+
+        <a href="?category=books">
+            <span>04</span>
+            Books
+        </a>
+
+        <a href="?category=digital">
+            <span>05</span>
+            Digital Products
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURED PRODUCTS
+========================= -->
+
+<section
+    class="products-section"
+    id="products"
+>
+
+    <div class="products-heading">
+
+        <div>
+
+            <span>
+                CURATED FOR YOU
+            </span>
+
+            <h2>
+                Featured Collection
+            </h2>
+
+        </div>
+
+        <p>
+            Products and resources thoughtfully chosen
+            for the motherhood journey.
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        {% for product in featured_products %}
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="{{ product.image.url }}"
+                    alt="{{ product.name }}"
+                >
+
+                {% if product.original_price %}
+                    <span class="offer">
+                        SPECIAL
+                    </span>
+                {% endif %}
+
+                <a
+                    href="#"
+                    class="quick-view"
+                >
+                    View
+                </a>
+
+            </div>
+
+
+            <div class="product-information">
+
+                <span class="product-category">
+                    {{ product.get_category_display }}
+                </span>
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <p>
+                    {{ product.short_description }}
+                </p>
+
+
+                <div class="price-row">
+
+                    <div>
+
+                        <strong>
+                            ₹{{ product.price }}
+                        </strong>
+
+                        {% if product.original_price %}
+
+                        <del>
+                            ₹{{ product.original_price }}
+                        </del>
+
+                        {% endif %}
+
+                    </div>
+
+<a href="{% url 'add_to_cart' product.id %}">
+    <button class="add-button" type="button">
+        +
+    </button>
+</a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <div class="empty-products">
+
+            <h3>
+                Products Coming Soon
+            </h3>
+
+            <p>
+                Our GARBHALIFE collection is being prepared
+                with care.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ALL PRODUCTS
+========================= -->
+
+<section class="all-products">
+
+    <div class="products-heading">
+
+        <div>
+
+            <span>
+                GARBHALIFE STORE
+            </span>
+
+            <h2>
+                Explore Everything
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="{{ product.image.url }}"
+                    alt="{{ product.name }}"
+                >
+
+                {% if product.stock == 0 %}
+
+                    <span class="sold-out">
+                        SOLD OUT
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="product-information">
+
+                <span class="product-category">
+                    {{ product.get_category_display }}
+                </span>
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <p>
+                    {{ product.short_description }}
+                </p>
+
+                <div class="price-row">
+
+                    <strong>
+                        ₹{{ product.price }}
+                    </strong>
+<div class="quantity-controls" style="display: flex; align-items: center; gap: 10px;">
+    <!-- Main Add to Cart Button Wrapper -->
+    {% if product.stock > 0 %}
+        <a href="{% url 'add_to_cart' product.id %}" style="text-decoration: none;">
+            <button class="add-button" type="button">
+                +
+            </button>
+        </a>
+    {% else %}
+        <button class="add-button" type="button" disabled>
+            Out of Stock
+        </button>
+    {% endif %}
+</div>
+
+
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <p class="no-products">
+            No products are currently available.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TRUST SECTION
+========================= -->
+
+<section class="trust-section">
+
+    <div>
+        <strong>01</strong>
+
+        <h3>
+            Thoughtfully Selected
+        </h3>
+
+        <p>
+            Products aligned with the GARBHALIFE
+            approach to mindful motherhood.
+        </p>
+    </div>
+
+
+    <div>
+        <strong>02</strong>
+
+        <h3>
+            Secure Shopping
+        </h3>
+
+        <p>
+            Your order information is handled
+            securely through our platform.
+        </p>
+    </div>
+
+
+    <div>
+        <strong>03</strong>
+
+        <h3>
+            Personal Support
+        </h3>
+
+        <p>
+            Have a question? Our team is here
+            to help you choose appropriately.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        GARBHALIFE
+    </div>
+
+    <p>
+        Ayurveda • Garbhasanskar • Mindful Motherhood
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="copyright">
+        © 2026 GARBHALIFE. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

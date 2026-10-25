@@ -1,0 +1,526 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | GARBHALIFE</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header class="navbar">
+    
+    <!-- 1. CORRECT PLACEMENT: The Hamburger Menu sits inside the header on the left -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="GARBHALIFE Logo" class="logo-img">
+        <div class="logo-text">GARBHALIFE</div>
+    </div>
+
+    <!-- 2. ADDED CLASS: 'nav-container' here ensures your JavaScript code can find it -->
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'programs' %}" class="{% if request.resolver_match.url_name == 'programs' %}active{% endif %}">
+                    Programs
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'store' %}" class="{% if request.resolver_match.url_name == 'store' %}active{% endif %}">
+                    Store
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 3. ADDED SCRIPT: Put this at the very bottom right before </body> to run the open/close action -->
+<script>
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    menuToggle.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="hero-tag">
+                Holistic Pregnancy Care
+            </span>
+
+            <h1>
+                Healthy Pregnancy Through Ayurveda & Garbhasanskar
+            </h1>
+
+            <p>
+                Supporting mothers with Ayurvedic guidance,
+                emotional wellness, yoga, meditation, and conscious pregnancy care.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'contact' %}" class="btn-primary">
+                    Book Consultation
+                </a>
+
+                <a href="#" class="btn-secondary">
+                    Join Program
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img src="{% static 'images/doctor.jpg' %}" alt="Dr Prajakta">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section class="about">
+
+        <div class="section-title">
+
+            <h2>About Dr. Prajakta</h2>
+
+        </div>
+
+        <p>
+            Dr. Prajakta Khade-Gite is an Ayurvedic doctor and Garbhasanskar consultant
+            from Pune dedicated to guiding women through a mindful and healthy pregnancy journey.
+            Through Suhrud Garbhasanskar, she combines Ayurveda, yoga, meditation,
+            music therapy, and emotional wellness for holistic motherhood care.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section class="services">
+
+        <div class="section-title">
+
+            <h2>Our Services</h2>
+
+        </div>
+
+
+        <div class="service-container">
+
+            <div class="service-card">
+
+                <h3>Pregnancy Care</h3>
+
+                <p>
+                    Personalized Ayurvedic care for healthy pregnancy.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <h3>Garbhasanskar Sessions</h3>
+
+                <p>
+                    Traditional wellness practices for mother and baby bonding.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <h3>Yoga & Meditation</h3>
+
+                <p>
+                    Calming sessions for emotional and physical balance.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <h3>Diet Guidance</h3>
+
+                <p>
+                    Healthy Ayurvedic food plans during pregnancy.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BENEFITS
+    ========================== -->
+
+    <section class="benefits">
+
+        <div class="section-title">
+
+            <h2>Benefits of Garbhasanskar</h2>
+
+        </div>
+
+
+        <div class="benefit-list">
+
+            <div class="benefit-box">
+                Positive Emotional Development
+            </div>
+
+            <div class="benefit-box">
+                Better Mother-Baby Bonding
+            </div>
+
+            <div class="benefit-box">
+                Stress-Free Pregnancy
+            </div>
+
+            <div class="benefit-box">
+                Mindful Parenting Preparation
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+     TESTIMONIALS
+========================== -->
+
+<section class="testimonials">
+
+    <div class="section-title">
+
+        <span>REAL EXPERIENCES</span>
+
+        <h2>
+            Mother Testimonials
+        </h2>
+
+        <p>
+            Hear from mothers who experienced
+            the Garbhalife journey.
+        </p>
+
+    </div>
+
+
+    <div class="testimonial-container">
+
+        {% for testimonial in testimonials %}
+
+        <div class="testimonial-card">
+
+
+            <!-- IMAGE -->
+
+            {% if testimonial.image %}
+
+            <div class="testimonial-image">
+
+                <img
+                    src="{{ testimonial.image.url }}"
+                    alt="{{ testimonial.name }}"
+                >
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- VIDEO -->
+
+            {% if testimonial.video %}
+
+            <div class="testimonial-video">
+
+                <video
+                    controls
+                    preload="metadata"
+                >
+
+                    <source
+                        src="{{ testimonial.video.url }}"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support
+                    the video element.
+
+                </video>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- QUOTE -->
+
+            <div class="testimonial-content">
+
+                <div class="quote-mark">
+                    “
+                </div>
+
+                <p>
+                    {{ testimonial.message }}
+                </p>
+
+                <h4>
+                    {{ testimonial.name }}
+                </h4>
+
+                <span class="verified">
+                    Garbhalife Mother
+                </span>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p class="no-testimonials">
+            Testimonials will appear here soon.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+    <!-- =========================
+         TIPS
+    ========================== -->
+
+    <section class="tips">
+
+        <div class="section-title">
+
+            <h2>Pregnancy Wellness Tips</h2>
+
+        </div>
+
+
+        <div class="tips-container">
+
+            <div class="tip-card">
+                Stay hydrated and eat fresh homemade food.
+            </div>
+
+            <div class="tip-card">
+                Practice meditation for emotional balance.
+            </div>
+
+            <div class="tip-card">
+                Listen to positive music and affirmations daily.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROGRAMS
+    ========================== -->
+
+    <section class="programs">
+
+        <div class="section-title">
+
+            <h2>Workshop Highlights</h2>
+
+        </div>
+
+
+        <div class="program-container">
+
+            <div class="program-card">
+
+                <h3>Weekly Garbhasanskar Classes</h3>
+
+            </div>
+
+
+            <div class="program-card">
+
+                <h3>Pregnancy Yoga Sessions</h3>
+
+            </div>
+
+
+            <div class="program-card">
+
+                <h3>Meditation & Music Therapy</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SOCIAL
+    ========================== -->
+
+    <section class="social">
+
+        <div class="section-title">
+
+            <h2>Connect With Us</h2>
+
+        </div>
+
+        <p>
+            Follow us on YouTube and Instagram for pregnancy wellness tips and guidance.
+        </p>
+
+        <div class="social-buttons">
+
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                YouTube
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact">
+
+        <div class="section-title">
+
+            <h2>Book Appointment</h2>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Your Name">
+
+            <input type="email" name="email" placeholder="Your Email">
+
+            <input type="text" name="phone" placeholder="Phone Number">
+
+            <textarea name="message" placeholder="Your Message"></textarea>
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 GARBHALIFE | Designed with care for motherhood wellness.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>

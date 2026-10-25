@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Your Cart | Garbhalife</title>
+
+   <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+</head>
+
+<body>
+
+
+<header class="cart-header">
+
+    <div class="logo-text">
+        GARBHALIFE
+    </div>
+
+    <a href="{% url 'store' %}">
+        ← Continue Shopping
+    </a>
+
+</header>
+
+
+<main class="cart-page">
+
+    <div class="cart-title">
+
+        <span>GARBHALIFE STORE</span>
+
+        <h1>
+            Your Shopping Cart
+        </h1>
+
+    </div>
+
+
+    {% if cart_items %}
+
+        <div class="cart-container">
+
+
+            <!-- CART ITEMS -->
+
+            <div class="cart-items">
+
+                {% for item in cart_items %}
+
+                <div class="cart-item">
+
+
+                    <div class="cart-product-image">
+
+                        {% if item.product.image %}
+
+                            <img
+                                src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}"
+                            >
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="cart-product-info">
+
+                        <h3>
+                            {{ item.product.name }}
+                        </h3>
+
+                        <p>
+                            ₹{{ item.product.price }}
+                        </p>
+
+
+                        <form
+                            method="POST"
+                            action="{% url 'update_cart' item.product.id %}"
+                        >
+
+                            {% csrf_token %}
+
+                            <div class="quantity-box">
+
+                                <label>
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    name="quantity"
+                                    value="{{ item.quantity }}"
+                                    min="1"
+                                    max="{{ item.product.stock }}"
+                                >
+
+                                <button type="submit">
+                                    Update
+                                </button>
+
+                            </div>
+
+                        </form>
+
+
+                        <a
+                            href="{% url 'remove_from_cart' item.product.id %}"
+                            class="remove-btn"
+                        >
+                            Remove
+                        </a>
+
+                    </div>
+
+
+                    <div class="cart-subtotal">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            ₹{{ item.subtotal }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <aside class="cart-summary">
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Items
+                    </span>
+
+                    <span>
+                        {{ cart_items|length }}
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row total-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong>
+                        ₹{{ total }}
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="{% url 'payment' %}"
+                    class="checkout-btn"
+                >
+                    Proceed to Checkout
+                <a/>
+            </aside>
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="empty-cart">
+
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <h2>
+                Your cart is empty
+            </h2>
+
+            <p>
+                Explore our wellness products
+                for your pregnancy journey.
+            </p>
+
+            <a href="{% url 'store' %}">
+                Explore Products →
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+</main>
+
+
+</body>
+</html>
