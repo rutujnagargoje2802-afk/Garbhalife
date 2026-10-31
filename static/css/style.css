@@ -912,44 +912,39 @@ body{
     background:#fffaf5;
 }
 
-.doctor-image{
-    position:relative;
-}
-
-/* 1. Style the parent container as the master arch box */
+/* --- 1. MOBILE RESPONSIVE STYLES (Default layout for phones) --- */
 .doctor-image {
     position: relative;
     width: 100%;
-    max-width: 440px;      /* Slightly reduced from 480px so it balances nicely with the text */
-    height: 560px;         /* Increased height to accommodate your tall 738x1599 image perfectly */
-    border-radius: 240px 240px 20px 20px;
-    overflow: hidden;      /* This clips the photo safely inside the arch curve */
+    max-width: 340px;            /* Perfect standard size for mobile phone viewports */
+    aspect-ratio: 3 / 4;         /* Locks a clean, stable portrait box ratio */
+    margin: 0 auto;              /* Centers it horizontally on the screen */
+    border-radius: 200px 200px 20px 20px;
+    overflow: hidden;
     z-index: 1;
 }
 
-/* 2. Adjust the decorative gold background outline to track the parent shape exactly */
-.doctor-image::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 20px;            /* Offset downwards */
-    left: 20px;           /* Changed to positive so it frames the image gracefully behind it */
-    border: 1px solid #c59d5f;
-    border-radius: 240px 240px 20px 20px;
-    z-index: -1;          /* Sits cleanly behind the image */
-}
-
-/* 3. Style the image to completely fill the arch frame without stretching */
 .doctor-image img {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover;           /* Keeps your 738x1599 image completely proportional */
-    object-position: center 10%; /* Lowers her face down safely away from the steep curve */
+    object-fit: cover;
+    object-position: center 25%; /* Pushes image upward to clear mobile curves */
 }
 
+/* --- 2. DESKTOP STYLES (Only applies to screens wider than 992px) --- */
+@media (min-width: 992px) {
+    .doctor-image {
+        max-width: 440px;        /* Increases width beautifully for large monitors */
+        height: 560px;           /* Locks an absolute desktop height */
+        border-radius: 240px 240px 20px 20px; /* Wider curve for larger scales */
+    }
+    
+    .doctor-image img {
+        object-position: center 10%; /* Lower percentage shifts content DOWN explicitly for desktop spacing */
+    }
 }
+
 
 .gold-line{
     width:70px;
