@@ -9,7 +9,7 @@ python manage.py migrate
 
 
 # This script automatically finds your Django settings folder and creates the admin account
-python -c "
+
 import os, glob, django, importlib
 # 1. Search for any folder containing settings.py automatically
 settings_paths = glob.glob('**/settings.py', recursive=True)
@@ -33,5 +33,5 @@ if not User.objects.filter(username='admin').exists():
     print('Superuser created successfully!')
 else:
     print('Superuser already exists.')
-"
+
 
