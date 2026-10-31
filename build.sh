@@ -10,7 +10,7 @@ python manage.py migrate
 
 python -c "
 import os, django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'garbhalife.settings')
 django.setup()
 from django.contrib.auth import get_user_model
 User = get_user_model()
