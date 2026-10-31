@@ -934,18 +934,20 @@ body{
     z-index:0;
 }
 
-.doctor-image img{
-    position:relative;
-    z-index:1;
-
-    width:100%;
-
-    max-width:480px;
-
-    display:block;
-
-    border-radius:240px 240px 20px 20px;
+.doctor-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    height: 520px; /* 1. Give it a dedicated height to allow positioning */
+    display: block;
+    
+    border-radius: 240px 240px 20px 20px;
+    
+    object-fit: cover;           /* 2. Forces image to scale nicely without warping */
+    object-position: center 20%; /* 3. Shifts the image down inside the arch curve */
 }
+
 
 .doctor-content h2{
     font-family:'Cormorant Garamond',serif;
