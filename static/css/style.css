@@ -929,7 +929,7 @@ body{
     box-shadow: 0 30px 60px rgba(0,0,0,0.12); /* Matches your smooth elevation drop shadow */
     
     /* Fine-tune the content positioning slightly inside this specific shape */
-    object-position: center 20%; 
+    object-position: center 75%; 
 }
 
 /* 3. Re-adjust your decorative gold border to shadow this exact shape perfectly */
