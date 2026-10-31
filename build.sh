@@ -8,10 +8,9 @@ python manage.py migrate
 
 
 
-# Add this code block at the bottom of your build.sh file
 python -c "
 import os, django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings') # <-- REPLACE with your actual project directory name
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings')
 django.setup()
 from django.contrib.auth import get_user_model
 User = get_user_model()
