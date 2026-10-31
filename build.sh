@@ -1,24 +1,15 @@
-
 #!/usr/bin/env bash
+# exit on error
 set -o errexit
 
+# 1. Install your project dependencies
 pip install -r requirements.txt
-python manage.py collectstatic --no-input
+
+# 2. Compile static files into staticfiles folder
+python manage.py collectstatic --noinput
+
+# 3. Synchronize database tables
 python manage.py migrate
 
-
-
-# Force-create a superuser automatically during deployment
-import os, django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'garbhalife.settings')  # <-- CHANGED TO GARBHALIFE
-django.setup()
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@example.com', 'SecurePass123!')
-    print('Superuser created successfully!')
-else:
-    print('Superuser already exists.')
-
-
-
+# 4. Trigger our automatic admin creation script safely
+python create_admin.py
